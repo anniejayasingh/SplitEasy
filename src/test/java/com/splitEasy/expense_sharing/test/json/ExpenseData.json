@@ -1,0 +1,17 @@
+{
+  "users": [
+    { "id": 1, "name": "Paid By User", "email": "payer@example.com" },
+    { "id": 2, "name": "Participant User", "email": "participant@example.com" }
+  ],
+  "group": {
+    "id": 100,
+    "members": [1, 2]
+  },
+  "expense": {
+    "id": 50,
+    "amount": 200.0,
+    "paidBy": 1,
+    "group": 100,
+    "participants": [1, 2]
+  }
+}
