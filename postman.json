@@ -1,0 +1,82 @@
+{
+"info": {
+"name": "SplitEasy Postman Collection",
+"_postman_id": "abcd1234-5678-90ef-ghij-1234567890ab",
+"description": "Postman collection for SplitEasy API endpoints",
+"schema": "[https://schema.getpostman.com/json/collection/v2.1.0/collection.json](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)"
+},
+"item": [
+{
+"name": "Create User",
+"request": {
+"method": "POST",
+"header": [{"key": "Content-Type", "value": "application/json"}],
+"body": {
+"mode": "raw",
+"raw": "{\n  "name": "David",\n  "email": "[david@example.com](mailto:david@example.com)",\n  "oAuthId": "david_google_id",\n  "role": "USER"\n}"
+},
+"url": {"raw": "http://localhost:8080/users/addUser", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["users", "addUser"]}
+}
+},
+{
+"name": "Create Group",
+"request": {
+"method": "POST",
+"header": [{"key": "Content-Type", "value": "application/json"}],
+"body": {
+"mode": "raw",
+"raw": "{\n  "name": "Office Trip",\n  "createdById": 2\n}"
+},
+"url": {"raw": "http://localhost:8080/groups", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["groups"]}
+}
+},
+{
+"name": "Add Members to Group",
+"request": {
+"method": "POST",
+"header": [{"key": "Content-Type", "value": "application/json"}],
+"body": {
+"mode": "raw",
+"raw": "{\n  "memberIds": [1,3]\n}"
+},
+"url": {"raw": "http://localhost:8080/groups/1/addMembers", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["groups", "1", "addMembers"]}
+}
+},
+{
+"name": "Create Expense Equal Split",
+"request": {
+"method": "POST",
+"header": [{"key": "Content-Type", "value": "application/json"}],
+"body": {
+"mode": "raw",
+"raw": "{\n  "description": "Lunch",\n  "totalAmount": 100,\n  "createdById": 1,\n  "groupId": 1,\n  "isEqualSplit": true,\n  "participantIds": [1,2,3]\n}"
+},
+"url": {"raw": "http://localhost:8080/expenses", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["expenses"]}
+}
+},
+{
+"name": "Create Expense Custom Split",
+"request": {
+"method": "POST",
+"header": [{"key": "Content-Type", "value": "application/json"}],
+"body": {
+"mode": "raw",
+"raw": "{\n  "description": "Hotel",\n  "totalAmount": 300,\n  "createdById": 2,\n  "groupId": 1,\n  "isEqualSplit": false,\n  "customSplits": {"1": 100, "2": 120, "3": 80}\n}"
+},
+"url": {"raw": "http://localhost:8080/expenses", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["expenses"]}
+}
+},
+{
+"name": "Create Settlement",
+"request": {
+"method": "POST",
+"header": [{"key": "Content-Type", "value": "application/json"}],
+"body": {
+"mode": "raw",
+"raw": "{\n  "payerId": 1,\n  "receiverId": 2,\n  "expenseId": 1,\n  "amount": 40\n}"
+},
+"url": {"raw": "http://localhost:8080/settlements", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["settlements"]}
+}
+}
+]
+}
